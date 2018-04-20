@@ -1,7 +1,9 @@
 package code;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class ThreeSumProblem {
@@ -45,6 +47,33 @@ public class ThreeSumProblem {
         }
         return result;
     }
+	public boolean sumToTarget(int[] arr, int target, int excludeIndex) {
+	    Map<Integer, Integer> map = new HashMap<>();
+	    for (int i = 0; i < arr.length; i++) {
+	        map.put(arr[i], i);
+	    }
+	    for (int i = 0; i< arr.length; i++) {
+	      int otherNo = target - arr[i];
+	      if( i == excludeIndex) {
+	          continue;
+	      }
+	      if (map.containsKey(otherNo) && map.get(otherNo) != i && map.get(otherNo) != excludeIndex) {
+	          return true;
+	      }
+	    }
+	    return false;
+	}
+
+	public boolean sum3Target(int[] arr, int target) {
+	    for(int i = 0 ; i < arr.length; i++) {
+	        int sum2 = target - arr[i];
+	        if (sumToTarget(arr, sum2, i)) {
+	            return true;
+	        }
+	    }
+	    
+	    return false;
+	}
 	
 	public static void main(String[] args) {
 		ThreeSumProblem obj = new ThreeSumProblem();
@@ -53,5 +82,8 @@ public class ThreeSumProblem {
 		int[] arr3 = {-6, -2,-2, 0 , 0, 1 , 1, 2};
 		List<List<Integer>> result = obj.threeSum(arr2);
 		List<List<Integer>> result3 = obj.threeSum(arr3);
+		
+		int[] arr4 = {1,-6, 8, 2,3, -5,	2};
+		System.out.println(obj.sum3Target(arr4, 2));
 	}
 }

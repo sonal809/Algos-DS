@@ -1,5 +1,7 @@
 package code;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Given an array and a value, remove all instances of that value in place and return the new length.
@@ -34,6 +36,7 @@ public class RemoveElement {
         return first;
     }
     
+    
     public static void main(String[] args) {
     	RemoveElement re = new RemoveElement();
     	int[] arr = {3,2,2,3};
@@ -45,6 +48,7 @@ public class RemoveElement {
     	int[] arr3 = {1};
     	System.out.println(re.removeElement(arr3, 1));
     	System.out.println(Arrays.toString(arr3));
+
 
 
     }

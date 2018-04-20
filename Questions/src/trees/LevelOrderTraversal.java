@@ -2,8 +2,12 @@ package trees;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 import pojos.TreeNode;
 import util.TreeNodeUtil;
@@ -49,6 +53,84 @@ public class LevelOrderTraversal {
 		
 	}
 	
+	 static Set<String> validWords = new HashSet<>();
+	    
+	    class Value {
+	        int freq;
+	        List<Integer> sentences;
+	        
+	        Value(int freq, int sentenceNo) {
+	            this.freq = freq;
+	            if (sentences == null) {
+	                sentences = new ArrayList();
+	            }
+	            sentences.add(sentenceNo);
+	        }
+	        
+	        @Override
+	        public String toString() {
+	            StringBuilder sb = new StringBuilder();
+	            sb.append("{").append(this.freq).append(":");
+	            for(int i = 0; i< this.sentences.size()-1; i++) {
+	                sb.append(this.sentences.get(i));
+	                sb.append(",");
+	            }
+	            sb.append(this.sentences.get(this.sentences.size()-1));
+	            sb.append("}");
+	            return sb.toString();
+	        }
+	    }
+	    /*
+	     * Complete the function below.
+	     */
+
+	    private static void initializeDict() {
+	        validWords.add("i.e.");
+	    }
+	    static void generateAndPrintConcordance(String[] inputLines) {
+	        
+	        
+	        System.out.println(inputLines.length);
+	        
+	        int size = inputLines.length;
+	        int sentenceNo = 1;
+	        boolean endOfSentence = false;
+	        Map<String, Value> map = new TreeMap<>(); 
+	        for (String inputLine: inputLines) {
+	            String[] words = inputLine.split("\\s+");
+	            for (String word: words) {
+	                if (endOfSentence) {
+	                    sentenceNo += 1;
+	                    endOfSentence = false;
+	                }
+	                if (!validWords.contains(word)) {
+	                    if (word.endsWith(".")) {
+	                        endOfSentence = true;
+	                        word.substring(0, word.length()-1);
+	                    }
+	                    if(word.endsWith(",")) {
+	                        word.substring(0, word.length() - 1);
+	                    }
+	                    if (map.get(word) != null) {
+	                        Value val = map.get(word);
+	                        val.freq += 1;
+	                        val.sentences.add(sentenceNo);
+	                    }
+	                    else {
+	                    	LevelOrderTraversal obj = new LevelOrderTraversal();
+	                    	LevelOrderTraversal.Value val = obj.new Value(1, sentenceNo);
+	                        map.put(word, val);
+	                    }
+	                }
+	            }
+	        }
+	        for(String word : map.keySet()){
+	        	word.toLowerCase();
+	            System.out.println(word + ": "+ map.get(word));
+	        }
+	        
+	    }
+	    
 	public static void main(String[] args) {
 		TreeNode node = new TreeNode(50);
 		TreeNodeUtil.insertBST(node, 30);
