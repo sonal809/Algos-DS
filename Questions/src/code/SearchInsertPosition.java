@@ -1,6 +1,7 @@
 package code;
 
-import junit.framework.Assert;
+
+import org.junit.Assert;
 
 /**
  * Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
@@ -62,8 +63,7 @@ public class SearchInsertPosition {
     }
 
     /**
-     * Sinchi's solution 
-     * @param args
+     * Sinchi's solution
      */
     	private static int find(int[] arr, int low, int high, int k) {
 
