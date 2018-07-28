@@ -79,7 +79,7 @@ public class CourseSchedule {
     	};
     	int[][] preq4 = {
     			
-    			{2,0},{1,0},{3,1},{3,2},{1,3}
+    			{2,0},{1,0},{3,1},{3,2}, {1,3}
     	};
    // 	System.out.println(sc.canFinish(2, prerequisites));
     //	System.out.println(sc.canFinish(2, prereq));

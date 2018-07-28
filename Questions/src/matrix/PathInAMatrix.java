@@ -69,7 +69,7 @@ public class PathInAMatrix {
 	        result.add(new ArrayList<>(path));
 	        return;
 	    }
-	    visited.add(start);
+//	    visited.add(start);
 	    
 	    int[] row = {0,0, -1, 1};
 	    int[] col = {-1, 1, 0, 0};
@@ -82,7 +82,7 @@ public class PathInAMatrix {
 	            
 	            if(matrix[rowIndex][colIndex] == 1) {
 	                Tuple next = new Tuple(rowIndex, colIndex);
-	                if(!visited.contains(next)) {
+	                if(!visited.contains(next) && !next.equals(start)) {
 	                    path.add(next);
 	                    getPath(next, end, matrix, path, visited,result);
 	                    path.remove(next);
@@ -91,6 +91,7 @@ public class PathInAMatrix {
 	            }
 	        }
 	    }
+	    visited.add(start);
 	    return;	    
 	    
 	}

@@ -42,8 +42,8 @@ public class LargestAreaInHistogram {
 	
 	public static void main(String[] args) {
 		int[] heights = {2,3,4};
-LargestAreaInHistogram obj = new LargestAreaInHistogram();
-obj.largestRectangleArea(heights);
+		LargestAreaInHistogram obj = new LargestAreaInHistogram();
+		obj.largestRectangleArea(heights);
 		
 	}
 }

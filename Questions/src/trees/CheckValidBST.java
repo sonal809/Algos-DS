@@ -8,8 +8,8 @@ public class CheckValidBST {
 	    public static boolean isValidBST(TreeNode root) {
 	        if (root == null) return true;
 	        if (!isValidBST(root.left)) return false;
-	        if (root.value <= last_node) return false;
-	        last_node = root.value;
+	        if (root.val <= last_node) return false;
+	        last_node = root.val;
 	        if (!isValidBST(root.right)) return false;
 	        return true;
 	    }

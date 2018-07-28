@@ -12,8 +12,8 @@ public class TreeNodeUtil {
 			root = new TreeNode(key);
 			return root;
 		}
-		if (key < root.value) root.left = insertBST(root.left, key);
-		else if (key > root.value) root.right = insertBST(root.right, key);
+		if (key < root.val) root.left = insertBST(root.left, key);
+		else if (key > root.val) root.right = insertBST(root.right, key);
 		return root;
 	}
 	

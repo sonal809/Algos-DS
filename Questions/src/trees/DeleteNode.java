@@ -14,9 +14,9 @@ public class DeleteNode {
     {
         if (root == null)  return root;
  
-        if (key < root.value)
+        if (key < root.val)
             root.left = deleteRec(root.left, key);
-        else if (key > root.value)
+        else if (key > root.val)
             root.right = deleteRec(root.right, key);
  
         // if key is same as root's key, then This is the node
@@ -31,10 +31,10 @@ public class DeleteNode {
  
             // node with two children: Get the inorder successor (smallest
             // in the right subtree)
-            root.value = minValue(root.right);
+            root.val = minValue(root.right);
  
             // Delete the inorder successor
-            root.right = deleteRec(root.right, root.value);
+            root.right = deleteRec(root.right, root.val);
         }
  
         return root;
@@ -42,10 +42,10 @@ public class DeleteNode {
  
     int minValue(TreeNode root)
     {
-        int minv = root.value;
+        int minv = root.val;
         while (root.left != null)
         {
-            minv = root.left.value;
+            minv = root.left.val;
             root = root.left;
         }
         return minv;
@@ -61,7 +61,7 @@ public class DeleteNode {
     	TreeNodeUtil.insertBST(node, 15);
     	TreeNodeUtil.insertBST(node, 70);
     	obj.deleteRec(node, 10);
-    	System.out.println(node.value);
+    	System.out.println(node.val);
 
 
 
